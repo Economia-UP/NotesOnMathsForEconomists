@@ -152,10 +152,10 @@ and to multiply each \(n\)-tuple by a real number \(\lambda\):
 
 In this way, each \(n\)-tuple is commonly referred to as a vector, and the real numbers \(\lambda\) are known as scalars. When \(n = 2\) or \(n = 3\), this reduces to vectors in the plane and in space, which most of us learned in high school.
 
-The natural relationship from \(\mathbb{R}^n\) to \(\mathbb{R}^m\) is established through matrix multiplication. We write a vector \(\mathbb{x} \in \mathbb{R}^n\) as a column vector:
+The natural relationship from \(\mathbb{R}^n\) to \(\mathbb{R}^m\) is established through matrix multiplication. We write a vector \(\mathrm{x} \in \mathbb{R}^n\) as a column vector:
 
 \[
-\mathbb{x} = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}
+\mathrm{x} = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}
 \]
 
 Similarly, we can write a vector in \(\mathbb{R}^m\) as a column vector with \(m\) entries. Let \(A\) be an \(m \times n\) matrix:
@@ -169,10 +169,10 @@ a_{m1} & a_{m2} & \cdots & a_{mn}
 \end{pmatrix}
 \]
 
-Then, the product \(A \mathbb{x}\) is the \(m\)-tuple:
+Then, the product \(A \mathrm{x}\) is the \(m\)-tuple:
 
 \[
-A \mathbb{x} = \begin{pmatrix}
+A \mathrm{x} = \begin{pmatrix}
 a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n \\
 a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n \\
 \vdots \\
@@ -180,10 +180,10 @@ a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n
 \end{pmatrix}
 \]
 
-For any two vectors \(\mathbb{x}\) and \(\mathbb{y}\) in \(\mathbb{R}^n\) and any two scalars \(\lambda\) and \(\mu\), the following property holds:
+For any two vectors \(\mathrm{x}\) and \(\mathrm{y}\) in \(\mathbb{R}^n\) and any two scalars \(\lambda\) and \(\mu\), the following property holds:
 
 \[
-A (\lambda \mathbb{x} + \mu \mathbb{y}) = \lambda A \mathbb{x}  + \mu A \mathbb{y}
+A (\lambda \mathrm{x} + \mu \mathrm{y}) = \lambda A \mathrm{x}  + \mu A \mathrm{y}
 \]
 
 In the next section, we will use the linearity of matrix multiplication to motivate the definition of a linear transformation between vector spaces. Now, let's relate all this to solving a system of linear equations. Suppose we are given numbers \(b_1, \ldots, b_m\) and numbers \(a_{ij}, \ldots, a_{mn}\). Our goal is to find \(n\) numbers \(x_1, \ldots, x_n\) that solve the following system of linear equations:
@@ -202,35 +202,35 @@ Calculations in linear algebra often reduce to solving a system of linear equati
 We can write:
 
 \[
-\mathbb{b} = \begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_m \end{pmatrix}
+\mathrm{b} = \begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_m \end{pmatrix}
 \]
 
 and our unknowns as:
 
 \[
-\mathbb{x} = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}
+\mathrm{x} = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}
 \]
 
 Then, we can rewrite our system of linear equations in the more visually appealing form:
 
 \[
-A \mathbb{x} = \mathbb{b}
+A \mathrm{x} = \mathrm{b}
 \]
 
 When \(m > n\) (when there are more equations than unknowns), we generally do not expect solutions. For example, when \(m = 3\) and \(n = 2\), this corresponds geometrically to the fact that three lines in a plane generally do not have a common intersection point. When \(m < n\) (when there are more unknowns than equations), we generally expect there to be many solutions. In the case where \(m = 2\) and \(n = 3\), this corresponds geometrically to the fact that two planes in space generally intersect in an entire line. Much of the machinery of linear algebra deals with the remaining case when \(m = n\).
 
-Therefore, we want to find the \(n \times 1\) column vector \(\mathbb{x}\) that solves \(A \mathbb{x} = \mathbb{b}\), where \(A\) is a given \(n \times n\) matrix and \(\mathbb{b}\) is a given \(n \times 1\) column vector.
+Therefore, we want to find the \(n \times 1\) column vector \(\mathrm{x}\) that solves \(A \mathrm{x} = \mathrm{b}\), where \(A\) is a given \(n \times n\) matrix and \(\mathrm{b}\) is a given \(n \times 1\) column vector.
 
 Suppose the square matrix \(A\) has an inverse matrix \(A^{-1}\) (which means that \(A^{-1}\) is also \(n \times n\) and, more importantly, that \(A A^{-1} = I\), where \(I\) is the identity matrix). Then our solution will be:
 
 \[
-\mathbb{x} = A^{-1} \mathbb{b}
+\mathrm{x} = A^{-1} \mathrm{b}
 \]
 
 because:
 
 \[
-A \mathbb{x} = A (A^{-1} \mathbb{b}) = I \mathbb{b} = \mathbb{b}
+A \mathrm{x} = A (A^{-1} \mathrm{b}) = I \mathrm{b} = \mathrm{b}
 \]
 
 Thus, solving our system of linear equations reduces to understanding when the \(n \times n\) matrix \(A\) has an inverse. (If an inverse matrix exists, then algorithms exist for its calculation). The key theorem of linear algebra, which is stated in section six, is essentially a list of many equivalencies for when an \(n \times n\) matrix has an inverse, and it is therefore crucial to understanding when a system of linear equations can be solved.
@@ -247,9 +247,9 @@ A set \(V\) is a \textbf{vector space} over the real numbers \(\mathbb{R}\) if t
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  \textbf{Scalar multiplication}: For every \(a \in \mathbb{R}\) and \(\mathbb{v} \in V\), there exists an element \(a \cdot \mathbb{v} \in V\), denoted \(a\mathbb{v}\), satisfying the properties of scalar multiplication.
+  \textbf{Scalar multiplication}: For every \(a \in \mathbb{R}\) and \(\mathrm{v} \in V\), there exists an element \(a \cdot \mathrm{v} \in V\), denoted \(a\mathrm{v}\), satisfying the properties of scalar multiplication.
 \item
-  \textbf{Vector addition}: For every \(\mathbb{v}, \mathbb{w} \in V\), there exists an element \(\mathbb{v} + \mathbb{w} \in V\), denoted \(\mathbb{v} + \mathbb{w}\), satisfying the properties of vector addition.
+  \textbf{Vector addition}: For every \(\mathrm{v}, \mathrm{w} \in V\), there exists an element \(\mathrm{v} + \mathrm{w} \in V\), denoted \(\mathrm{v} + \mathrm{w}\), satisfying the properties of vector addition.
 \end{enumerate}
 
 These operations must satisfy the following properties:
@@ -257,33 +257,33 @@ These operations must satisfy the following properties:
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Additive identity}: There exists an element \(\mathbb{0} \in V\) (the zero vector) such that \(\mathbb{0} + \mathbb{v} = \mathbb{v}\) for all \(\mathbb{v} \in V\).\\
+  \textbf{Additive identity}: There exists an element \(\mathrm{0} \in V\) (the zero vector) such that \(\mathrm{0} + \mathrm{v} = \mathrm{v}\) for all \(\mathrm{v} \in V\).\\
 \item
-  \textbf{Additive inverse}: For every \(\mathbb{v} \in V\), there exists an element \(-\mathbb{v} \in V\) such that \(\mathbb{v} + (-\mathbb{v}) = \mathbb{0}\).\\
+  \textbf{Additive inverse}: For every \(\mathrm{v} \in V\), there exists an element \(-\mathrm{v} \in V\) such that \(\mathrm{v} + (-\mathrm{v}) = \mathrm{0}\).\\
 \item
-  \textbf{Commutativity}: For all \(\mathbb{v}, \mathbb{w} \in V\), \(\mathbb{v} + \mathbb{w} = \mathbb{w} + \mathbb{v}\).\\
+  \textbf{Commutativity}: For all \(\mathrm{v}, \mathrm{w} \in V\), \(\mathrm{v} + \mathrm{w} = \mathrm{w} + \mathrm{v}\).\\
 \item
-  \textbf{Distributivity of scalar multiplication over vector addition}: For all \(a \in \mathbb{R}\) and \(\mathbb{v}, \mathbb{w} \in V\), \(a(\mathbb{v} + \mathbb{w}) = a\mathbb{v} + a\mathbb{w}\).\\
+  \textbf{Distributivity of scalar multiplication over vector addition}: For all \(a \in \mathbb{R}\) and \(\mathrm{v}, \mathrm{w} \in V\), \(a(\mathrm{v} + \mathrm{w}) = a\mathrm{v} + a\mathrm{w}\).\\
 \item
-  \textbf{Distributivity of scalar multiplication over scalar addition}: For all \(a, b \in \mathbb{R}\) and \(\mathbb{v} \in V\), \((a + b)\mathbb{v} = a\mathbb{v} + b\mathbb{v}\).\\
+  \textbf{Distributivity of scalar multiplication over scalar addition}: For all \(a, b \in \mathbb{R}\) and \(\mathrm{v} \in V\), \((a + b)\mathrm{v} = a\mathrm{v} + b\mathrm{v}\).\\
 \item
-  \textbf{Compatibility of scalar multiplication with field multiplication}: For all \(a, b \in \mathbb{R}\) and \(\mathbb{v} \in V\), \(a(b\mathbb{v}) = (ab)\mathbb{v}\).\\
+  \textbf{Compatibility of scalar multiplication with field multiplication}: For all \(a, b \in \mathbb{R}\) and \(\mathrm{v} \in V\), \(a(b\mathrm{v}) = (ab)\mathrm{v}\).\\
 \item
-  \textbf{Multiplicative identity}: For all \(\mathbb{v} \in V\), \(1 \cdot \mathbb{v} = \mathbb{v}\), where 1 is the multiplicative identity in \(\mathbb{R}\).\\
+  \textbf{Multiplicative identity}: For all \(\mathrm{v} \in V\), \(1 \cdot \mathrm{v} = \mathrm{v}\), where 1 is the multiplicative identity in \(\mathbb{R}\).\\
 \end{itemize}
 
 \end{definition}
 
-The field of scalars can be replaced by other fields, such as \(\mathbb{C}\), without changing the general concept of vector spaces.
+The field of scalars can be replaced by other fields, such as \(\mathrm{C}\), without changing the general concept of vector spaces.
 
 Elements of a vector space are referred to as \textbf{vectors}, while elements of the scalar field (e.g., \(\mathbb{R}\)) are called \textbf{scalars}. For example, \(\mathbb{R}^n\), the space of all \(n\)-tuples of real numbers, is a vector space that satisfies these axioms.
 
 The natural mappings between vector spaces are linear transformations.
 
 \begin{definition}
-A \textbf{linear transformation} \(T : V \to W\) is a function from a vector space \(V\) to a vector space \(W\) such that for all \(a_1, a_2 \in \mathbb{R}\) and \(\mathbb{v}_1, \mathbb{v}_2 \in V\):\\
+A \textbf{linear transformation} \(T : V \to W\) is a function from a vector space \(V\) to a vector space \(W\) such that for all \(a_1, a_2 \in \mathbb{R}\) and \(\mathrm{v}_1, \mathrm{v}_2 \in V\):\\
 \[
-T(a_1 \mathbb{v}_1 + a_2 \mathbb{v}_2) = a_1 T(\mathbb{v}_1) + a_2 T(\mathbb{v}_2).
+T(a_1 \mathrm{v}_1 + a_2 \mathrm{v}_2) = a_1 T(\mathrm{v}_1) + a_2 T(\mathrm{v}_2).
 \]
 
 An example of a linear transformation is matrix multiplication, mapping \(\mathbb{R}^n\) to \(\mathbb{R}^m\).
@@ -309,12 +309,12 @@ If \(T : V \to W\) is a linear transformation, then:
 \item
   The \textbf{kernel} of \(T\) is\\
   \[
-  \ker(T) = \{ \mathbb{v} \in V : T(\mathbb{v}) = 0 \}.
+  \ker(T) = \{ \mathrm{v} \in V : T(\mathrm{v}) = 0 \}.
   \]\\
 \item
   The \textbf{image} of \(T\) is\\
   \[
-  \text{Im}(T) = \{ \mathbb{w} \in W : \text{there exists } \mathbb{v} \in V \text{ such that } T(\mathbb{v}) = \mathbb{w} \}.
+  \text{Im}(T) = \{ \mathrm{w} \in W : \text{there exists } \mathrm{v} \in V \text{ such that } T(\mathrm{v}) = \mathrm{w} \}.
   \]
 \end{itemize}
 
