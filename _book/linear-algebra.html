@@ -65,6 +65,28 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -93,6 +115,13 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
 <li class="chapter" data-level="2.1" data-path="linear-algebra.html"><a href="linear-algebra.html#the-basic-vector-space-mathbbrn"><i class="fa fa-check"></i><b>2.1</b> The Basic Vector Space <span class="math inline">\(\mathbb{R}^n\)</span></a></li>
 <li class="chapter" data-level="2.2" data-path="linear-algebra.html"><a href="linear-algebra.html#vector-spaces-and-linear-transformations"><i class="fa fa-check"></i><b>2.2</b> Vector Spaces and Linear Transformations</a></li>
 <li class="chapter" data-level="2.3" data-path="linear-algebra.html"><a href="linear-algebra.html#bases-dimension-and-linear-transformations-as-matrices"><i class="fa fa-check"></i><b>2.3</b> Bases, Dimension, and Linear Transformations as Matrices</a></li>
+<li class="chapter" data-level="2.4" data-path="linear-algebra.html"><a href="linear-algebra.html#the-determinant"><i class="fa fa-check"></i><b>2.4</b> The Determinant</a></li>
+<li class="chapter" data-level="2.5" data-path="linear-algebra.html"><a href="linear-algebra.html#the-key-theorem-of-linear-algebra"><i class="fa fa-check"></i><b>2.5</b> The Key Theorem of Linear Algebra</a></li>
+<li class="chapter" data-level="2.6" data-path="linear-algebra.html"><a href="linear-algebra.html#similar-matrices"><i class="fa fa-check"></i><b>2.6</b> Similar Matrices</a></li>
+<li class="chapter" data-level="2.7" data-path="linear-algebra.html"><a href="linear-algebra.html#eigenvalues-and-eigenvectors"><i class="fa fa-check"></i><b>2.7</b> Eigenvalues and Eigenvectors</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="linear-algebra.html"><a href="linear-algebra.html#eigenvalues-and-determinants"><i class="fa fa-check"></i><b>2.7.1</b> Eigenvalues and Determinants</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -117,6 +146,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
             <section class="normal" id="section-">
 <div id="linear-algebra" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Linear Algebra<a href="linear-algebra.html#linear-algebra" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Based on <span class="citation">Garrity and Pedersen (<a href="#ref-garrity_2007">2007</a>)</span></p>
 <div id="the-basic-vector-space-mathbbrn" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> The Basic Vector Space <span class="math inline">\(\mathbb{R}^n\)</span><a href="linear-algebra.html#the-basic-vector-space-mathbbrn" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The quintessential vector space is <span class="math inline">\(\mathbb{R}^n\)</span>, which is defined as the set of all <span class="math inline">\(n\)</span>-tuples of real numbers. As we will see in the next section, what makes this set a vector space is the ability to add two <span class="math inline">\(n\)</span>-tuples to obtain another <span class="math inline">\(n\)</span>-tuple:</p>
@@ -211,19 +241,19 @@ A \mathbb{x} = A (A^{-1} \mathbb{b}) = I \mathbb{b} = \mathbb{b}
 <p>Real numbers can be replaced by complex numbers and, indeed, by any field.</p>
 <p>As a matter of notation, and to be consistent with common usage, the elements of a vector space are called vectors, and the elements of <span class="math inline">\(\mathbb{R}\)</span> (or any field being used) are called scalars. It is worth noting that the space <span class="math inline">\(\mathbb{R}^n\)</span> mentioned in the previous section satisfies these conditions.</p>
 <p>The natural map between vector spaces is that of a linear transformation.</p>
-<p>::: {.definition} A linear transformation <span class="math inline">\(T : V \to W\)</span> is a function from a vector space <span class="math inline">\(V\)</span> to a vector space <span class="math inline">\(W\)</span> such that for any real numbers <span class="math inline">\(a_1\)</span> and <span class="math inline">\(a_2\)</span>, and for any vectors <span class="math inline">\(v_1\)</span> and <span class="math inline">\(v_2\)</span> in <span class="math inline">\(V\)</span>, it holds that</p>
+<p>:::{.definition} A linear transformation <span class="math inline">\(T : V \to W\)</span> is a function from a vector space <span class="math inline">\(V\)</span> to a vector space <span class="math inline">\(W\)</span> such that for any real numbers <span class="math inline">\(a_1\)</span> and <span class="math inline">\(a_2\)</span>, and for any vectors <span class="math inline">\(v_1\)</span> and <span class="math inline">\(v_2\)</span> in <span class="math inline">\(V\)</span>, it holds that</p>
 <p><span class="math display">\[
 T(a_1 v_1 + a_2 v_2) = a_1 T(v_1) + a_2 T(v_2).
 \]</span></p>
 <p>Matrix multiplication from <span class="math inline">\(\mathbb{R}^n\)</span> to <span class="math inline">\(\mathbb{R}^m\)</span> provides an example of a linear transformation.
 :::</p>
-<p>::: {.definition} A subset <span class="math inline">\(U\)</span> of a vector space <span class="math inline">\(V\)</span> is a subspace of <span class="math inline">\(V\)</span> if <span class="math inline">\(U\)</span> itself is a vector space.</p>
+<p>:::{.definition} A subset <span class="math inline">\(U\)</span> of a vector space <span class="math inline">\(V\)</span> is a subspace of <span class="math inline">\(V\)</span> if <span class="math inline">\(U\)</span> itself is a vector space.</p>
 <p>In practice, it is usually easy to determine if a subset of a vector space is, in fact, a subspace, using the following proposition, whose proof is left to the reader.
 :::</p>
-<p>::: {.proposition} A subset <span class="math inline">\(U\)</span> of a vector space <span class="math inline">\(V\)</span> is a subspace of <span class="math inline">\(V\)</span> if <span class="math inline">\(U\)</span> is closed under addition and scalar multiplication.</p>
+<p>:::{.proposition} A subset <span class="math inline">\(U\)</span> of a vector space <span class="math inline">\(V\)</span> is a subspace of <span class="math inline">\(V\)</span> if <span class="math inline">\(U\)</span> is closed under addition and scalar multiplication.</p>
 <p>Given a linear transformation <span class="math inline">\(T : V \to W\)</span>, there are naturally occurring subspaces both in <span class="math inline">\(V\)</span> and <span class="math inline">\(W\)</span>.
 :::</p>
-<p>::: {.definition} If <span class="math inline">\(T : V \to W\)</span> is a linear transformation, then the kernel of <span class="math inline">\(T\)</span> is:</p>
+<p>:::{.definition} If <span class="math inline">\(T : V \to W\)</span> is a linear transformation, then the kernel of <span class="math inline">\(T\)</span> is:</p>
 <p><span class="math display">\[
 \ker(T) = \{ v \in V : T(v) = 0 \}
 \]</span></p>
@@ -324,7 +354,391 @@ A \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix} = \begin{pmatrix} b_
 \]</span></p>
 <p>It is important to note that if <span class="math inline">\(T: V \to V\)</span> is a linear transformation of a vector space onto itself, then the corresponding matrix will be <span class="math inline">\(n \times n\)</span>, i.e., a square matrix.</p>
 <p>Given different bases for the vector spaces <span class="math inline">\(V\)</span> and <span class="math inline">\(W\)</span>, the matrix associated with the linear transformation <span class="math inline">\(T\)</span> will change. A natural problem is to determine when two matrices actually represent the same linear transformation, but under different bases. This will be the subject of section seven.</p>
+</div>
+<div id="the-determinant" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> The Determinant<a href="linear-algebra.html#the-determinant" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Our next task is to define the determinant of a matrix. In fact, we will present three alternative descriptions of the determinant. These descriptions are equivalent, and each has its own advantages.</p>
+<p>The first method involves defining the determinant of a <span class="math inline">\(1 \times 1\)</span> matrix and then recursively defining the determinant of an <span class="math inline">\(n \times n\)</span> matrix. Since <span class="math inline">\(1 \times 1\)</span> matrices are simply numbers, the following should not be surprising:</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-7" class="definition"><strong>Definition 2.7  </strong></span>The determinant of a <span class="math inline">\(1 \times 1\)</span> matrix <span class="math inline">\(a\)</span> is the real-valued function:<br />
+<span class="math display">\[ \det(a) = a. \]</span></p>
+</div>
+<p>This should not yet seem significant.</p>
+<p>Before defining the determinant for a general <span class="math inline">\(n \times n\)</span> matrix, we need some notation. For an <span class="math inline">\(n \times n\)</span> matrix:<br />
+<span class="math display">\[ A =
+\begin{pmatrix}
+a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn}
+\end{pmatrix},
+\]</span><br />
+we denote by <span class="math inline">\(A_{ij}\)</span> the <span class="math inline">\((n - 1) \times (n - 1)\)</span> matrix obtained from <span class="math inline">\(A\)</span> by removing the <span class="math inline">\(i\)</span>-th row and <span class="math inline">\(j\)</span>-th column. For example, if<br />
+<span class="math display">\[ A =
+\begin{pmatrix}
+2 &amp; 6 &amp; 1 \\
+3 &amp; 4 &amp; 8 \\
+5 &amp; 9 &amp; 7
+\end{pmatrix},
+\]</span><br />
+then<br />
+<span class="math display">\[ A_{23} =
+\begin{pmatrix}
+2 &amp; 1 \\
+3 &amp; 8
+\end{pmatrix}.
+\]</span><br />
+Similarly, if<br />
+<span class="math display">\[ A =
+\begin{pmatrix}
+6 &amp; 7 \\
+4 &amp; 1 \\
+9 &amp; 8
+\end{pmatrix},
+\]</span><br />
+then<br />
+<span class="math display">\[ A_{12} =
+\begin{pmatrix}
+7 &amp; 8
+\end{pmatrix}.
+\]</span></p>
+<p>Since we have a definition for the determinant of <span class="math inline">\(1 \times 1\)</span> matrices, we will assume by induction that we know the determinant of any <span class="math inline">\((n - 1) \times (n - 1)\)</span> matrix and use this to find the determinant of an <span class="math inline">\(n \times n\)</span> matrix.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-8" class="definition"><strong>Definition 2.8  </strong></span>Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(n \times n\)</span> matrix. The determinant of <span class="math inline">\(A\)</span> is defined as:<br />
+<span class="math display">\[ \det(A) = \sum_{k=1}^n a_{1k} \det(A_{1k}). \]</span></p>
+</div>
+<p>Thus, for<br />
+<span class="math display">\[ A =
+\begin{pmatrix}
+a_{11} &amp; a_{12} \\
+a_{21} &amp; a_{22}
+\end{pmatrix},
+\]</span><br />
+we have:<br />
+<span class="math display">\[ \det(A) = a_{11} \det(A_{11}) - a_{12} \det(A_{12}), \]</span><br />
+which aligns with the determinant formula most of us think of. The determinant of our earlier <span class="math inline">\(3 \times 3\)</span> matrix is:<br />
+<span class="math display">\[ \det
+\begin{pmatrix}
+2 &amp; 6 &amp; 1 \\
+3 &amp; 4 &amp; 8 \\
+5 &amp; 9 &amp; 7
+\end{pmatrix}
+= 2 \det(A_{11}) - 3 \det(A_{12}) + 5 \det(A_{13}). \]</span></p>
+<p>Although this definition is an efficient way to describe the determinant, it obscures many of its uses and intuitions.</p>
+<p>The second way to describe the determinant incorporates its key algebraic properties. It highlights the functional properties of the determinant. Denote the <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> as <span class="math inline">\(A = (A_1, A_2, \dots, A_n)\)</span>, where <span class="math inline">\(A_i\)</span> denotes the <span class="math inline">\(i\)</span>-th column:</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-9" class="definition"><strong>Definition 2.9  </strong></span>The determinant of <span class="math inline">\(A\)</span> is the unique real-valued function:<br />
+<span class="math display">\[ \det: \text{Matrices} \to \mathbb{R}, \]</span><br />
+that satisfies:<br />
+1. <span class="math inline">\(\det(A_1, \dots, c A_k, \dots, A_n) = c \det(A_1, \dots, A_k, \dots, A_n)\)</span>.<br />
+2. <span class="math inline">\(\det(A_1, \dots, A_k + A_{k&#39;}, \dots, A_n) = \det(A_1, \dots, A_k, \dots, A_n)\)</span> for <span class="math inline">\(k \neq k&#39;\)</span>.<br />
+3. <span class="math inline">\(\det(\text{Identity Matrix}) = 1.\)</span></p>
+</div>
+<p>Thus, treating each column vector of a matrix as a vector in <span class="math inline">\(\mathbb{R}^n\)</span>, the determinant can be viewed as a special function from <span class="math inline">\(\mathbb{R}^n \times \dots \times \mathbb{R}^n\)</span> to the real numbers.</p>
+<p>To use this definition, one would need to prove that such a function on the space of matrices, satisfying these conditions, exists and is unique. Existence can be shown by verifying that our first (inductive) definition satisfies these conditions, although this involves tedious computation. The proof of uniqueness can be found in most linear algebra texts.</p>
+<p>The third definition of the determinant is the most geometric but also the vaguest. Think of an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> as a linear transformation from <span class="math inline">\(\mathbb{R}^n\)</span> to <span class="math inline">\(\mathbb{R}^n\)</span>. Then, <span class="math inline">\(A\)</span> maps the unit cube in <span class="math inline">\(\mathbb{R}^n\)</span> to some other object (a parallelepiped). The unit cube has, by definition, a volume of one.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-10" class="definition"><strong>Definition 2.10  </strong></span>The determinant of the matrix <span class="math inline">\(A\)</span> is the signed volume of the image of the unit cube.</p>
+</div>
+<p>This is not well-defined since the method of defining the volume of the image has not been described. In fact, most would define the signed volume of the image as the number given by the determinant using one of the two previous definitions. However, this can be made rigorous, albeit at the cost of losing much of the geometric intuition.</p>
+<p>For example, the matrix<br />
+<span class="math display">\[ A =
+\begin{pmatrix}
+2 &amp; 0 \\
+0 &amp; 1
+\end{pmatrix}
+\]</span><br />
+maps the unit cube to a region with doubled area, so we must have:<br />
+<span class="math display">\[ \det(A) = 2. \]</span></p>
+<p>Signed volume means that if the orientations of the edges of the unit cube are reversed, we must have a negative sign for the volume. For example, consider the matrix<br />
+<span class="math display">\[ A =
+\begin{pmatrix}
+0 &amp; -1 \\
+1 &amp; 0
+\end{pmatrix}. \]</span><br />
+Here, the image is:<br />
+<span class="math display">\[ \begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; -1
+\end{pmatrix}. \]</span><br />
+Note that the orientations of the sides are reversed. Since the area is still doubled, the definition forces:<br />
+<span class="math display">\[ \det(A) = -2. \]</span></p>
+<p>Defining orientation rigorously is somewhat complicated (we will do this in Chapter Six), but its meaning is straightforward.</p>
+<p>The determinant has many algebraic properties. For example:</p>
+<div class="lemma">
+<p><span id="lem:unlabeled-div-11" class="lemma"><strong>Lemma 2.1  </strong></span>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <span class="math inline">\(n \times n\)</span> matrices, then:<br />
+<span class="math display">\[ \det(AB) = \det(A) \cdot \det(B). \]</span></p>
+</div>
+<p>This can be proven via lengthy calculation or by focusing on the definition of the determinant as the change in volume of the unit cube.</p>
+</div>
+<div id="the-key-theorem-of-linear-algebra" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> The Key Theorem of Linear Algebra<a href="linear-algebra.html#the-key-theorem-of-linear-algebra" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Below is the fundamental theorem of linear algebra. <em>(Note: We have not yet defined eigenvalues or eigenvectors, but we will do so in Section 8.)</em></p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-12" class="theorem"><strong>Theorem 2.1  </strong></span>(Key Theorem 1.6.1) Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(n \times n\)</span> matrix. Then, the following statements are equivalent:<br />
+1. <span class="math inline">\(A\)</span> is invertible.<br />
+2. <span class="math inline">\(\det(A) \neq 0\)</span>.<br />
+3. <span class="math inline">\(\ker(A) = \{0\}\)</span>.<br />
+4. If <span class="math inline">\(\mathbf{b}\)</span> is a column vector in <span class="math inline">\(\mathbb{R}^n\)</span>, there exists a unique column vector <span class="math inline">\(\mathbf{x}\)</span> in <span class="math inline">\(\mathbb{R}^n\)</span> such that <span class="math inline">\(A\mathbf{x} = \mathbf{b}\)</span>.<br />
+5. The columns of <span class="math inline">\(A\)</span> are linearly independent <span class="math inline">\(n \times 1\)</span> column vectors.<br />
+6. The rows of <span class="math inline">\(A\)</span> are linearly independent <span class="math inline">\(1 \times n\)</span> row vectors.<br />
+7. The transpose <span class="math inline">\(A^\top\)</span> of <span class="math inline">\(A\)</span> is invertible. <em>(Here, if <span class="math inline">\(A = (a_{ij})\)</span>, then <span class="math inline">\(A^\top = (a_{ji})\)</span>.</em><br />
+8. All eigenvalues of <span class="math inline">\(A\)</span> are nonzero.</p>
+</div>
+<p>We can restate this theorem in terms of linear transformations:</p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-13" class="theorem"><strong>Theorem 2.2  </strong></span>(Key Theorem 1.6.2) Let <span class="math inline">\(T: V \to V\)</span> be a linear transformation. Then, the following statements are equivalent:<br />
+1. <span class="math inline">\(T\)</span> is invertible.<br />
+2. <span class="math inline">\(\det(T) \neq 0\)</span>, where the determinant is defined via a choice of basis in <span class="math inline">\(V\)</span>.<br />
+3. <span class="math inline">\(\ker(T) = \{0\}\)</span>.<br />
+4. If <span class="math inline">\(\mathbf{b}\)</span> is a vector in <span class="math inline">\(V\)</span>, there exists a unique vector <span class="math inline">\(\mathbf{v}\)</span> in <span class="math inline">\(V\)</span> such that <span class="math inline">\(T(\mathbf{v}) = \mathbf{b}\)</span>.<br />
+5. For any basis <span class="math inline">\(\mathbf{v}_1, \dots, \mathbf{v}_n\)</span> of <span class="math inline">\(V\)</span>, the image vectors <span class="math inline">\(T(\mathbf{v}_1), \dots, T(\mathbf{v}_n)\)</span> are linearly independent.<br />
+6. For any basis <span class="math inline">\(\mathbf{v}_1, \dots, \mathbf{v}_n\)</span> of <span class="math inline">\(V\)</span>, if <span class="math inline">\(S\)</span> denotes the transpose linear transformation of <span class="math inline">\(T\)</span>, then the image vectors <span class="math inline">\(S(\mathbf{v}_1), \dots, S(\mathbf{v}_n)\)</span> are linearly independent.<br />
+7. The transpose <span class="math inline">\(T^\top\)</span> is invertible. <em>(Here, the transpose is defined via a choice of basis in <span class="math inline">\(V\)</span>.)</em><br />
+8. All eigenvalues of <span class="math inline">\(T\)</span> are nonzero.</p>
+</div>
+<p>To clarify the correspondence between the two theorems, we note that we currently have definitions for the determinant and the transpose only for matrices, not for linear transformations. However, both notions can be extended to linear transformations by fixing a basis (or equivalently, by choosing an inner product, which will be defined in Chapter 13 on Fourier series).</p>
+<p>It is important to note that while the actual value of <span class="math inline">\(\det(T)\)</span> depends on the chosen basis, the condition <span class="math inline">\(\det(T) \neq 0\)</span> does not. Similar remarks apply to conditions (6) and (7).</p>
+<p>An exercise (Exercise 7) encourages the reader to find any linear algebra textbook and complete the proof of this theorem. It is unlikely that the textbook will present the result in this exact form, making the act of translation itself part of the exercise’s purpose.</p>
+<p>Each of these equivalences is significant and can be studied in its own right. It is remarkable that they are all equivalent.</p>
+</div>
+<div id="similar-matrices" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Similar Matrices<a href="linear-algebra.html#similar-matrices" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Recall that given a coordinate system for a vector space <span class="math inline">\(V\)</span> of dimension <span class="math inline">\(n\)</span>, we can represent a linear transformation <span class="math inline">\(T: V \to V\)</span> as an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span>. However, if we choose a different coordinate system <span class="math inline">\(V&#39;\)</span>, the matrix representing the linear transformation <span class="math inline">\(T&#39;\)</span> will generally differ from the original matrix <span class="math inline">\(A\)</span>. The goal of this section is to establish a clear criterion to determine when two matrices represent the same linear transformation under different choices of bases.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-14" class="definition"><strong>Definition 2.11  </strong></span>Two <span class="math inline">\(n \times n\)</span> matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <strong>similar</strong> if there exists an invertible matrix <span class="math inline">\(C\)</span> such that<br />
+<span class="math display">\[
+A = C^{-1} B C.
+\]</span></p>
+</div>
+<p>We aim to show that two matrices are similar precisely when they represent the same linear transformation. Let us choose two bases for the vector space <span class="math inline">\(V\)</span>, say <span class="math inline">\(\{v_1, \dots, v_n\}\)</span> (the <span class="math inline">\(v\)</span>-basis) and <span class="math inline">\(\{w_1, \dots, w_n\}\)</span> (the <span class="math inline">\(w\)</span>-basis). Let <span class="math inline">\(A\)</span> be the matrix representing the linear transformation <span class="math inline">\(T\)</span> with respect to the <span class="math inline">\(v\)</span>-basis, and <span class="math inline">\(B\)</span> the matrix representing <span class="math inline">\(T\)</span> with respect to the <span class="math inline">\(w\)</span>-basis. We seek to construct the matrix <span class="math inline">\(C\)</span> such that<br />
+<span class="math display">\[
+A = C^{-1} B C.
+\]</span></p>
+<p>Recall that given the <span class="math inline">\(v\)</span>-basis, any vector <span class="math inline">\(\mathbf{z} \in V\)</span> can be written as an <span class="math inline">\(n \times 1\)</span> column vector as follows: there exist unique scalars <span class="math inline">\(a_1, \dots, a_n\)</span> such that<br />
+<span class="math display">\[
+\mathbf{z} = a_1 \mathbf{v}_1 + \dots + a_n \mathbf{v}_n.
+\]</span></p>
+<p>We then represent <span class="math inline">\(\mathbf{z}\)</span> with respect to the <span class="math inline">\(v\)</span>-basis as the column vector:<br />
+<span class="math display">\[
+\begin{pmatrix}
+a_1 \\
+\vdots \\
+a_n
+\end{pmatrix}.
+\]</span></p>
+<p>Similarly, there exist unique scalars <span class="math inline">\(b_1, \dots, b_n\)</span> such that<br />
+<span class="math display">\[
+\mathbf{z} = b_1 \mathbf{w}_1 + \dots + b_n \mathbf{w}_n,
+\]</span><br />
+which means that with respect to the <span class="math inline">\(w\)</span>-basis, the vector <span class="math inline">\(\mathbf{z}\)</span> is represented as:<br />
+<span class="math display">\[
+\begin{pmatrix}
+b_1 \\
+\vdots \\
+b_n
+\end{pmatrix}.
+\]</span></p>
+<p>The desired matrix <span class="math inline">\(C\)</span> is the one that satisfies the relationship:<br />
+<span class="math display">\[
+C A = B C.
+\]</span></p>
+<p>Determining when two matrices are similar is a result that frequently arises in mathematics and physics. Often, we need to select a coordinate system (a basis) to express anything, but the underlying mathematics or physics of interest is independent of the initial choice. The key question then becomes: <em>What is preserved when the coordinate system changes?</em> Similar matrices provide a starting point to understand these issues.</p>
+</div>
+<div id="eigenvalues-and-eigenvectors" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> Eigenvalues and Eigenvectors<a href="linear-algebra.html#eigenvalues-and-eigenvectors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the previous section, we observed that two matrices represent the same linear transformation under different choices of bases precisely when they are similar. However, this does not tell us how to choose a basis for a vector space so that a linear transformation has a particularly simple matrix representation. For instance, the diagonal matrix<br />
+<span class="math display">\[
+A =
+\begin{pmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 2 &amp; 0 \\
+0 &amp; 0 &amp; 3
+\end{pmatrix}
+\]</span><br />
+is similar to the matrix<br />
+<span class="math display">\[
+B =
+\begin{pmatrix}
+1 &amp; -5 &amp; 15 \\
+1 &amp; -1 &amp; 84 \\
+-4 &amp; -15 &amp; 15
+\end{pmatrix},
+\]</span><br />
+but the simplicity of <span class="math inline">\(A\)</span> is evident compared to <span class="math inline">\(B\)</span>. (Incidentally, it is not obvious that <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are similar; I started with <span class="math inline">\(A\)</span>, chose a nonsingular matrix <span class="math inline">\(C\)</span>, and then used Mathematica software to compute <span class="math inline">\(C^{-1}AC\)</span> to obtain <span class="math inline">\(B\)</span>. This was not immediately apparent but intentionally set up.)</p>
+<p>One of the purposes of the following definitions of eigenvalues and eigenvectors is to provide tools for selecting good bases. However, there are many other reasons to understand eigenvalues and eigenvectors.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-15" class="definition"><strong>Definition 2.12  </strong></span>Let <span class="math inline">\(T: V \to V\)</span> be a linear transformation. A nonzero vector <span class="math inline">\(\mathbf{v} \in V\)</span> is an eigenvector of <span class="math inline">\(T\)</span> with eigenvalue <span class="math inline">\(\lambda\)</span>, a scalar, if<br />
+<span class="math display">\[
+T(\mathbf{v}) = \lambda \mathbf{v}.
+\]</span><br />
+For an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span>, a nonzero column vector <span class="math inline">\(\mathbf{x} \in \mathbb{R}^n\)</span> is an eigenvector with eigenvalue <span class="math inline">\(\lambda\)</span>, a scalar, if<br />
+<span class="math display">\[
+A \mathbf{x} = \lambda \mathbf{x}.
+\]</span></p>
+</div>
+<p>Geometrically, a vector <span class="math inline">\(\mathbf{v}\)</span> is an eigenvector of the linear transformation <span class="math inline">\(T\)</span> with eigenvalue <span class="math inline">\(\lambda\)</span> if <span class="math inline">\(T\)</span> stretches <span class="math inline">\(\mathbf{v}\)</span> by a factor of <span class="math inline">\(\lambda\)</span>.</p>
+<p>For example, consider the matrix<br />
+<span class="math display">\[
+\begin{pmatrix}
+-2 &amp; 1 \\
+2 &amp; 7
+\end{pmatrix}.
+\]</span><br />
+Here, <span class="math inline">\(\lambda = 2\)</span> is an eigenvalue, and <span class="math inline">\(\mathbf{v}\)</span> is an eigenvector for the linear transformation represented by this <span class="math inline">\(2 \times 2\)</span> matrix.</p>
+<p>Fortunately, there is a simple way to describe the eigenvalues of a square matrix, allowing us to see that the eigenvalues of a matrix are preserved under a similarity transformation.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-16" class="definition"><strong>Definition 2.13  </strong></span>A scalar <span class="math inline">\(\lambda\)</span> is an eigenvalue of a square matrix <span class="math inline">\(A\)</span> if and only if <span class="math inline">\(\lambda\)</span> is a root of the polynomial<br />
+<span class="math display">\[
+P(t) = \det(tI - A),
+\]</span><br />
+where <span class="math inline">\(P(t)\)</span> is called the characteristic polynomial of <span class="math inline">\(A\)</span>.</p>
+</div>
+<p><strong>Proof</strong>: Suppose <span class="math inline">\(\lambda\)</span> is an eigenvalue of <span class="math inline">\(A\)</span>, with eigenvector <span class="math inline">\(\mathbf{v}\)</span>. Then,<br />
+<span class="math display">\[
+A \mathbf{v} = \lambda \mathbf{v},
+\]</span><br />
+which implies<br />
+<span class="math display">\[
+A \mathbf{v} - \lambda \mathbf{v} = 0.
+\]</span><br />
+Introducing the identity matrix <span class="math inline">\(I\)</span>, we rewrite this as<br />
+<span class="math display">\[
+0 = (\lambda I - A) \mathbf{v}.
+\]</span><br />
+Thus, the matrix <span class="math inline">\(\lambda I - A\)</span> has a nontrivial kernel, <span class="math inline">\(\mathbf{v}\)</span>. By the key theorem of linear algebra, this occurs precisely when<br />
+<span class="math display">\[
+\det(\lambda I - A) = 0,
+\]</span><br />
+which means <span class="math inline">\(\lambda\)</span> is a root of the characteristic polynomial <span class="math inline">\(P(t) = \det(tI - A)\)</span>. Since these implications are reversible, the theorem is established.</p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-17" class="theorem"><strong>Theorem 2.3  </strong></span>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are similar matrices, then the characteristic polynomial of <span class="math inline">\(A\)</span> is equal to the characteristic polynomial of <span class="math inline">\(B\)</span>.</p>
+</div>
+<p><strong>Proof</strong>: For <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> to be similar, there must exist an invertible matrix <span class="math inline">\(C\)</span> such that <span class="math inline">\(A = C^{-1}BC\)</span>. Then,<br />
+<span class="math display">\[
+\det(tI - A) = \det(tI - C^{-1}BC) = \det(C^{-1}(tI - B)C) = \det(C^{-1})\det(tI - B)\det(C) = \det(tI - B),
+\]</span><br />
+using the property <span class="math inline">\(\det(C^{-1}C) = 1 = \det(C^{-1})\det(C)\)</span>.</p>
+<p>Since similar matrices have the same characteristic polynomial, it follows that their eigenvalues must also be the same.</p>
+<div class="corollary">
+<p><span id="cor:unlabeled-div-18" class="corollary"><strong>Corollary 2.1  </strong></span>The eigenvalues of similar matrices are identical. Thus, to determine if two matrices are not similar, check whether their eigenvalues differ. If they do, the matrices are not similar.</p>
+<p>However, in general, identical eigenvalues do not imply that matrices are similar. For example, the matrices<br />
+<span class="math display">\[
+A =
+\begin{pmatrix}
+4 &amp; 2 \\
+7 &amp; 5
+\end{pmatrix}
+\quad \text{and} \quad
+B =
+\begin{pmatrix}
+2 &amp; 3 \\
+5 &amp; 4
+\end{pmatrix}
+\]</span><br />
+have eigenvalues <span class="math inline">\(1\)</span> and <span class="math inline">\(2\)</span>, but they are not similar. (This can be shown by assuming the existence of an invertible matrix <span class="math inline">\(C\)</span> such that <span class="math inline">\(C^{-1}AC = B\)</span> and then demonstrating that <span class="math inline">\(\det(C) = 0\)</span>, which contradicts the invertibility of <span class="math inline">\(C\)</span>.)</p>
+</div>
+<div id="eigenvalues-and-determinants" class="section level3 hasAnchor" number="2.7.1">
+<h3><span class="header-section-number">2.7.1</span> Eigenvalues and Determinants<a href="linear-algebra.html#eigenvalues-and-determinants" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Since the characteristic polynomial <span class="math inline">\(P(t)\)</span> does not change under a similarity transformation, the coefficients of <span class="math inline">\(P(t)\)</span> are also preserved. As these coefficients are polynomial functions (complex) of the entries of the matrix <span class="math inline">\(A\)</span>, we obtain special polynomials of the entries of <span class="math inline">\(A\)</span> that are invariant under similarity transformations. One such coefficient, already seen in another form, is the determinant of <span class="math inline">\(A\)</span>, as highlighted in the following theorem. This theorem establishes a deeper connection between the eigenvalues of <span class="math inline">\(A\)</span> and the determinant of <span class="math inline">\(A\)</span>.</p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-19" class="theorem"><strong>Theorem 2.4  </strong></span>Let <span class="math inline">\(\lambda_1, \lambda_2, \dots, \lambda_n\)</span> be the eigenvalues (counted with multiplicity) of a matrix <span class="math inline">\(A\)</span>. Then,<br />
+<span class="math display">\[
+\det(A) = \lambda_1 \cdot \lambda_2 \cdot \dots \cdot \lambda_n.
+\]</span></p>
+</div>
+<p>Before proving this theorem, we need to clarify the concept of counting eigenvalues “with multiplicity.” The difficulty arises because a polynomial can have a root that must be counted more than once. For example, the polynomial <span class="math inline">\((z - 2)^2\)</span> has a single root <span class="math inline">\(2\)</span>, but we count it twice. This situation is particularly relevant for the characteristic polynomial.</p>
+<p>For instance, consider the matrix<br />
+<span class="math display">\[
+A =
+\begin{pmatrix}
+5 &amp; 0 &amp; 0 \\
+0 &amp; 5 &amp; 0 \\
+0 &amp; 0 &amp; 4
+\end{pmatrix},
+\]</span><br />
+which has the characteristic polynomial <span class="math inline">\(P(t) = (t - 5)(t - 5)(t - 4)\)</span>. Here, we list the eigenvalues as <span class="math inline">\(4, 5,\)</span> and <span class="math inline">\(5\)</span>, counting the eigenvalue <span class="math inline">\(5\)</span> twice.</p>
+<p><strong>Proof</strong>: Since the eigenvalues <span class="math inline">\(\lambda_1, \lambda_2, \dots, \lambda_n\)</span> are the roots of the characteristic polynomial <span class="math inline">\(\det(tI - A)\)</span>, we can write<br />
+<span class="math display">\[
+\det(tI - A) = (t - \lambda_1)(t - \lambda_2) \cdots (t - \lambda_n).
+\]</span><br />
+Setting <span class="math inline">\(t = 0\)</span>, we obtain<br />
+<span class="math display">\[
+(-1)^n \lambda_1 \lambda_2 \cdots \lambda_n = \det(-A).
+\]</span><br />
+In the matrix <span class="math inline">\(-A\)</span>, each column of <span class="math inline">\(A\)</span> is multiplied by <span class="math inline">\(-1\)</span>. Using the linearity of the determinant, we can factor out <span class="math inline">\(-1\)</span> from each column, yielding<br />
+<span class="math display">\[
+\det(-A) = (-1)^n \det(A).
+\]</span><br />
+Substituting, we have<br />
+<span class="math display">\[
+(-1)^n \lambda_1 \lambda_2 \cdots \lambda_n = (-1)^n \det(A),
+\]</span><br />
+and thus,<br />
+<span class="math display">\[
+\det(A) = \lambda_1 \cdot \lambda_2 \cdots \lambda_n.
+\]</span></p>
+<p>To find a “good” basis for representing a linear transformation, we measure “goodness” by how close the matrix is to being diagonal. Here, we focus on a special but common class of matrices: symmetric matrices. A matrix <span class="math inline">\(A\)</span> is symmetric if <span class="math inline">\(A = (a_{ij})\)</span> satisfies <span class="math inline">\(a_{ij} = a_{ji}\)</span>, meaning the element in the <span class="math inline">\(i\)</span>-th row and <span class="math inline">\(j\)</span>-th column equals the element in the <span class="math inline">\(j\)</span>-th row and <span class="math inline">\(i\)</span>-th column.</p>
+<p>For example:<br />
+<span class="math display">\[
+\begin{pmatrix}
+5 &amp; 3 &amp; 4 \\
+3 &amp; 5 &amp; 2 \\
+4 &amp; 2 &amp; 4
+\end{pmatrix}
+\]</span><br />
+is symmetric, but<br />
+<span class="math display">\[
+\begin{pmatrix}
+5 &amp; 6 &amp; 2 \\
+2 &amp; 5 &amp; 18 \\
+3 &amp; 3 &amp; 4
+\end{pmatrix}
+\]</span><br />
+is not.</p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-20" class="theorem"><strong>Theorem 2.5  </strong></span>If <span class="math inline">\(A\)</span> is a symmetric matrix, then there exists a matrix <span class="math inline">\(B\)</span> similar to <span class="math inline">\(A\)</span> that is diagonal. Moreover, the entries along the diagonal of <span class="math inline">\(B\)</span> are precisely the eigenvalues of <span class="math inline">\(A\)</span>.</p>
+</div>
+<p><strong>Proof</strong>: The proof relies on showing that the eigenvectors of <span class="math inline">\(A\)</span> form a basis such that <span class="math inline">\(A\)</span> becomes diagonal in this basis. We assume that <span class="math inline">\(A\)</span>’s eigenvalues are distinct since technical difficulties arise when eigenvalues have multiplicity.</p>
+<p>Let <span class="math inline">\(v_1, v_2, \dots, v_n\)</span> be the eigenvectors of <span class="math inline">\(A\)</span> with corresponding eigenvalues <span class="math inline">\(\lambda_1, \lambda_2, \dots, \lambda_n\)</span>. Form the matrix<br />
+<span class="math display">\[
+C =
+\begin{pmatrix}
+v_1 &amp; v_2 &amp; \dots &amp; v_n
+\end{pmatrix},
+\]</span><br />
+where the <span class="math inline">\(i\)</span>-th column of <span class="math inline">\(C\)</span> is the column vector <span class="math inline">\(v_i\)</span>. We will show that the matrix <span class="math inline">\(C^{-1}AC\)</span> satisfies our theorem. Specifically, we aim to demonstrate<br />
+<span class="math display">\[
+C^{-1}AC = B,
+\]</span><br />
+where <span class="math inline">\(B\)</span> is the desired diagonal matrix.</p>
+<p>Define <span class="math inline">\(B\)</span> as<br />
+<span class="math display">\[
+B =
+\begin{pmatrix}
+\lambda_1 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; \lambda_2 &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; \lambda_n
+\end{pmatrix}.
+\]</span><br />
+The diagonal matrix <span class="math inline">\(B\)</span> is the only matrix satisfying <span class="math inline">\(Be_i = \lambda_i e_i\)</span> for all <span class="math inline">\(i\)</span>, where <span class="math inline">\(e_i\)</span> is the standard basis vector. Observe that <span class="math inline">\(Ce_i = v_i\)</span> for all <span class="math inline">\(i\)</span>. Thus,<br />
+<span class="math display">\[
+C^{-1}ACe_i = C^{-1}Av_i = C^{-1}(\lambda_i v_i) = \lambda_i C^{-1}v_i = \lambda_i e_i,
+\]</span><br />
+proving that<br />
+<span class="math display">\[
+C^{-1}AC = B.
+\]</span></p>
+<p>This result is not the end of the story. For nonsymmetric matrices, there are other canonical forms to find “good” similar matrices, such as the Jordan canonical form, upper triangular form, and rational canonical form.</p>
 
+</div>
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-garrity_2007" class="csl-entry">
+Garrity, Thomas A., and Lori Pedersen. 2007. <em>All the Mathematics You Missed: But Need to Know for Graduate School</em>. 11. print. Cambridge: Cambridge Univ. Press.
 </div>
 </div>
             </section>
@@ -364,7 +778,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/07-notes_econometrics.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-linear-algebra.Rmd",
 "text": "Edit"
 },
 "history": {
