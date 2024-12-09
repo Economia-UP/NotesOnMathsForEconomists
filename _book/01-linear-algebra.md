@@ -106,114 +106,92 @@ Thus, solving our system of linear equations reduces to understanding when the \
 
 ## Vector Spaces and Linear Transformations
 
-The abstract approach to studying systems of linear equations begins with the notion of a vector space.
+The abstract approach to studying systems of linear equations begins with the concept of a vector space.
 
 :::{.definition}  
-A set \( V \) is a vector space over the real numbers \( \mathbb{R} \) if there are two operations:
+A set \( V \) is a **vector space** over the real numbers \( \mathbb{R} \) if there are two operations:  
 
-1. Scalar multiplication: For every \( a \in \mathbb{R} \) and \( \mathbb{v} \in V \), there is an element \( a \cdot \mathbb{v} \in V \), denoted by \( a \mathbb{v} \), which satisfies the properties of scalar multiplication.
+1. **Scalar multiplication**: For every \( a \in \mathbb{R} \) and \( \mathbb{v} \in V \), there exists an element \( a \cdot \mathbb{v} \in V \), denoted \( a\mathbb{v} \), satisfying the properties of scalar multiplication.  
 
-2. Vector addition: For every \( \mathbb{v}, \mathbb{w} \in V \), there is an element \( \mathbb{v} + \mathbb{w} \in V \), denoted by \( \mathbb{v} + \mathbb{w} \), which satisfies the properties of vector addition.
+2. **Vector addition**: For every \( \mathbb{v}, \mathbb{w} \in V \), there exists an element \( \mathbb{v} + \mathbb{w} \in V \), denoted \( \mathbb{v} + \mathbb{w} \), satisfying the properties of vector addition.  
 
-These operations must satisfy the following properties:
+These operations must satisfy the following properties:  
 
-a) **Additive identity**: There exists an element \( \mathbb{0} \in V \) (the zero vector) such that \( \mathbb{0} + \mathbb{v} = \mathbb{v} \) for all \( \mathbb{v} \in V \).
+- **Additive identity**: There exists an element \( \mathbb{0} \in V \) (the zero vector) such that \( \mathbb{0} + \mathbb{v} = \mathbb{v} \) for all \( \mathbb{v} \in V \).  
+- **Additive inverse**: For every \( \mathbb{v} \in V \), there exists an element \( -\mathbb{v} \in V \) such that \( \mathbb{v} + (-\mathbb{v}) = \mathbb{0} \).  
+- **Commutativity**: For all \( \mathbb{v}, \mathbb{w} \in V \), \( \mathbb{v} + \mathbb{w} = \mathbb{w} + \mathbb{v} \).  
+- **Distributivity of scalar multiplication over vector addition**: For all \( a \in \mathbb{R} \) and \( \mathbb{v}, \mathbb{w} \in V \), \( a(\mathbb{v} + \mathbb{w}) = a\mathbb{v} + a\mathbb{w} \).  
+- **Distributivity of scalar multiplication over scalar addition**: For all \( a, b \in \mathbb{R} \) and \( \mathbb{v} \in V \), \( (a + b)\mathbb{v} = a\mathbb{v} + b\mathbb{v} \).  
+- **Compatibility of scalar multiplication with field multiplication**: For all \( a, b \in \mathbb{R} \) and \( \mathbb{v} \in V \), \( a(b\mathbb{v}) = (ab)\mathbb{v} \).  
+- **Multiplicative identity**: For all \( \mathbb{v} \in V \), \( 1 \cdot \mathbb{v} = \mathbb{v} \), where 1 is the multiplicative identity in \( \mathbb{R} \).  
+:::  
 
-b) **Additive inverse**: For each \( \mathbb{v} \in V \), there exists an element \( -\mathbb{v} \in V \) such that \( \mathbb{v} + (-\mathbb{v}) = \mathbb{0} \).
+The field of scalars can be replaced by other fields, such as \( \mathbb{C} \), without changing the general concept of vector spaces.  
 
-c) **Commutativity**: For all \( \mathbb{v}, \mathbb{w} \in V \), it holds that \( \mathbb{v} + \mathbb{w} = \mathbb{w} + \mathbb{v} \).
+Elements of a vector space are referred to as **vectors**, while elements of the scalar field (e.g., \( \mathbb{R} \)) are called **scalars**. For example, \( \mathbb{R}^n \), the space of all \( n \)-tuples of real numbers, is a vector space that satisfies these axioms.  
 
-d) **Distributivity of scalar multiplication over vector addition**: For all \( a \in \mathbb{R} \) and for all \( \mathbb{v}, \mathbb{w} \in V \), we have \( a(\mathbb{v} + \mathbb{w}) = a\mathbb{v} + a\mathbb{w} \).
+The natural mappings between vector spaces are linear transformations.  
 
-e) **Distributivity of scalar multiplication over scalar addition**: For all \( a, b \in \mathbb{R} \) and for all \( \mathbb{v} \in V \), it holds that \( (a + b)\mathbb{v} = a\mathbb{v} + b\mathbb{v} \).
-
-f) **Compatibility of scalar multiplication with field multiplication**: For all \( a, b \in \mathbb{R} \) and all \( \mathbb{v} \in V \), it holds that \( a(b\mathbb{v}) = (ab)\mathbb{v} \).
-
-g) **Multiplicative identity**: For all \( \mathbb{v} \in V \), it holds that \( 1 \cdot \mathbb{v} = \mathbb{v} \), where 1 is the multiplicative identity in \( \mathbb{R} \).
-:::
-
-Real numbers can be replaced by complex numbers and, indeed, by any field.
-
-As a matter of notation, and to be consistent with common usage, the elements of a vector space are called vectors, and the elements of \( \mathbb{R} \) (or any field being used) are called scalars. It is worth noting that the space \( \mathbb{R}^n \) mentioned in the previous section satisfies these conditions.
-
-The natural map between vector spaces is that of a linear transformation.
-
-:::{.definition} A linear transformation \( T : V \to W \) is a function from a vector space \( V \) to a vector space \( W \) such that for any real numbers \( a_1 \) and \( a_2 \), and for any vectors \( v_1 \) and \( v_2 \) in \( V \), it holds that
-
+:::{.definition}  
+A **linear transformation** \( T : V \to W \) is a function from a vector space \( V \) to a vector space \( W \) such that for all \( a_1, a_2 \in \mathbb{R} \) and \( \mathbb{v}_1, \mathbb{v}_2 \in V \):  
 $$
-T(a_1 v_1 + a_2 v_2) = a_1 T(v_1) + a_2 T(v_2).
-$$
+T(a_1 \mathbb{v}_1 + a_2 \mathbb{v}_2) = a_1 T(\mathbb{v}_1) + a_2 T(\mathbb{v}_2).
+$$  
 
-Matrix multiplication from \( \mathbb{R}^n \) to \( \mathbb{R}^m \) provides an example of a linear transformation.
-:::
+An example of a linear transformation is matrix multiplication, mapping \( \mathbb{R}^n \) to \( \mathbb{R}^m \).  
+:::  
 
-:::{.definition} A subset \( U \) of a vector space \( V \) is a subspace of \( V \) if \( U \) itself is a vector space.
+:::{.definition}  
+A subset \( U \) of a vector space \( V \) is called a **subspace** if \( U \) itself is a vector space under the operations of \( V \).  
 
-In practice, it is usually easy to determine if a subset of a vector space is, in fact, a subspace, using the following proposition, whose proof is left to the reader.
-:::
+To determine whether a subset is a subspace, we use the following proposition:  
+:::  
 
-:::{.proposition} A subset \( U \) of a vector space \( V \) is a subspace of \( V \) if \( U \) is closed under addition and scalar multiplication.
+:::{.proposition}  
+A subset \( U \) of a vector space \( V \) is a subspace if it is closed under addition and scalar multiplication.  
+:::  
 
-Given a linear transformation \( T : V \to W \), there are naturally occurring subspaces both in \( V \) and \( W \).
-:::
+Given a linear transformation \( T : V \to W \), we can naturally define two important subspaces of \( V \) and \( W \).  
 
-:::{.definition} If \( T : V \to W \) is a linear transformation, then the kernel of \( T \) is:
+:::{.definition}  
+If \( T : V \to W \) is a linear transformation, then:  
 
-$$
-\ker(T) = \{ v \in V : T(v) = 0 \}
-$$
+- The **kernel** of \( T \) is  
+  $$
+  \ker(T) = \{ \mathbb{v} \in V : T(\mathbb{v}) = 0 \}.
+  $$  
+- The **image** of \( T \) is  
+  $$
+  \text{Im}(T) = \{ \mathbb{w} \in W : \text{there exists } \mathbb{v} \in V \text{ such that } T(\mathbb{v}) = \mathbb{w} \}.
+  $$  
 
-and the image of \( T \) is
+The kernel of \( T \) is a subspace of \( V \), as closure under addition and scalar multiplication can be verified. Similarly, the image of \( T \) is a subspace of \( W \).  
+:::  
 
-$$
-\text{Im}(T) = \{ w \in W : \text{there exists } v \in V \text{ such that } T(v) = w \}.
-$$
+### An Example Beyond Finite Dimensions  
 
-The kernel is a subspace of \( V \), since if \( v_1 \) and \( v_2 \) are two vectors in the kernel and \( a \) and \( b \) are any two real numbers, then
+If all vector spaces were finite-dimensional (like \( \mathbb{R}^n \)), the above abstraction would be trivial. However, vector spaces can also include function spaces.  
 
-$$
-T(a v_1 + b v_2) = a T(v_1) + b T(v_2) = a \cdot 0 + b \cdot 0 = 0.
-$$
-:::
+Consider the set \( C^*[0,1] \) of all real-valued functions defined on \( [0,1] \) such that the \( k \)-th derivative exists and is continuous. The sum of two such functions and the scalar multiplication of a function by a real number remain in \( C^*[0,1] \), making it a vector space. Unlike \( \mathbb{R}^n \), \( C^*[0,1] \) is infinite-dimensional.  
 
-Similarly, we can prove that the image of \( T \) is a subspace of \( W \).
-
-If the only vector spaces that existed were column vectors in \( \mathbb{R} \), then even this level of abstraction would be trivial. However, this is not the case.
-
-Here we consider just one example. Let \( C^*[0,1] \) be the set of all real-valued functions with domain on the unit interval \( [0,1] \):
-
-$$
-f : [0,1] \to \mathbb{R}
-$$
-
-such that the \( k \)-th derivative of \( f \) exists and is continuous. Since the sum of any two such functions and a multiple of any of these functions by a scalar will remain in \( C^*[0,1] \), we have a vector space. Although we will define the dimension officially in the next section, \( C^*[0,1] \) will have infinite dimension (and thus will definitely not be some \( \mathbb{R}^n \)). We can see the derivative as a linear transformation from \( C^*[0,1] \) to those functions with one derivative less, \( C^{k-1}[0,1] \):
-
+The derivative operator defines a linear transformation:  
 $$
 \frac{d}{dx} : C^*[0,1] \to C^{k-1}[0,1].
-$$
+$$  
 
-The kernel of this transformation consists of those functions whose \( k \)-th derivative is zero, that is, constant functions.
+The kernel of this transformation is the set of functions whose \( k \)-th derivative is zero, i.e., the set of constant functions.  
 
-Now consider the differential equation
-
+Now consider the second-order differential equation:  
 $$
 f'' + 3f' + 2f = 0.
-$$
+$$  
 
-Let \( T \) be the linear transformation:
-
-$$
-T : C^*[0,1] \to C^*[0,1]
-$$
-
-defined by
-
+Let \( T \) be the linear transformation defined by:  
 $$
 T(f) = f'' + 3f' + 2f.
-$$
+$$  
 
-The problem of finding a solution \( f(x) \) to the original differential equation can now be translated into finding an element in the kernel of \( T \). This suggests the possibility (which is indeed true) that the language of linear algebra can be used to understand solutions to (linear) differential equations.
-
+Finding a solution \( f(x) \) to the differential equation corresponds to finding an element in \( \ker(T) \). This illustrates how the language of linear algebra provides tools for studying (linear) differential equations.  
 
 
 

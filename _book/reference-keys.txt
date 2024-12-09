@@ -5,6 +5,7 @@ support
 linear-algebra
 the-basic-vector-space-mathbbrn
 vector-spaces-and-linear-transformations
+an-example-beyond-finite-dimensions
 bases-dimension-and-linear-transformations-as-matrices
 the-determinant
 the-key-theorem-of-linear-algebra
