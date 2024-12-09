@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Linear Algebra | Notes on maths for economists</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Linear Algebra | Notes on maths for economists" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Linear Algebra | Notes on maths for economists" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  
+
+<meta name="author" content="Juan Alvaro Díaz Raimond Kedilhac" />
+
+
+<meta name="date" content="2024-12-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Notes on maths for economists</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#purpose"><i class="fa fa-check"></i><b>1.1</b> Purpose</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#feedback"><i class="fa fa-check"></i><b>1.2</b> Feedback</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#support"><i class="fa fa-check"></i><b>1.3</b> Support</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="linear-algebra.html"><a href="linear-algebra.html"><i class="fa fa-check"></i><b>2</b> Linear Algebra</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="linear-algebra.html"><a href="linear-algebra.html#the-basic-vector-space-mathbbrn"><i class="fa fa-check"></i><b>2.1</b> The Basic Vector Space <span class="math inline">\(\mathbb{R}^n\)</span></a></li>
+<li class="chapter" data-level="2.2" data-path="linear-algebra.html"><a href="linear-algebra.html#vector-spaces-and-linear-transformations"><i class="fa fa-check"></i><b>2.2</b> Vector Spaces and Linear Transformations</a></li>
+<li class="chapter" data-level="2.3" data-path="linear-algebra.html"><a href="linear-algebra.html#bases-dimension-and-linear-transformations-as-matrices"><i class="fa fa-check"></i><b>2.3</b> Bases, Dimension, and Linear Transformations as Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Notes on maths for economists</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="linear-algebra" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Linear Algebra<a href="linear-algebra.html#linear-algebra" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="the-basic-vector-space-mathbbrn" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> The Basic Vector Space <span class="math inline">\(\mathbb{R}^n\)</span><a href="linear-algebra.html#the-basic-vector-space-mathbbrn" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The quintessential vector space is <span class="math inline">\(\mathbb{R}^n\)</span>, which is defined as the set of all <span class="math inline">\(n\)</span>-tuples of real numbers. As we will see in the next section, what makes this set a vector space is the ability to add two <span class="math inline">\(n\)</span>-tuples to obtain another <span class="math inline">\(n\)</span>-tuple:</p>
+<p><span class="math display">\[
+(v_1, \ldots, v_n) + (w_1, \ldots, w_n) = (v_1 + w_1, \ldots, v_n + w_n)
+\]</span></p>
+<p>and to multiply each <span class="math inline">\(n\)</span>-tuple by a real number <span class="math inline">\(\lambda\)</span>:</p>
+<p><span class="math display">\[
+\lambda (v_1, \ldots, v_n) = (\lambda v_1, \ldots, \lambda v_n)
+\]</span></p>
+<p>In this way, each <span class="math inline">\(n\)</span>-tuple is commonly referred to as a vector, and the real numbers <span class="math inline">\(\lambda\)</span> are known as scalars. When <span class="math inline">\(n = 2\)</span> or <span class="math inline">\(n = 3\)</span>, this reduces to vectors in the plane and in space, which most of us learned in high school.</p>
+<p>The natural relationship from <span class="math inline">\(\mathbb{R}^n\)</span> to <span class="math inline">\(\mathbb{R}^m\)</span> is established through matrix multiplication. We write a vector <span class="math inline">\(\mathbb{x} \in \mathbb{R}^n\)</span> as a column vector:</p>
+<p><span class="math display">\[
+\mathbb{x} = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}
+\]</span></p>
+<p>Similarly, we can write a vector in <span class="math inline">\(\mathbb{R}^m\)</span> as a column vector with <span class="math inline">\(m\)</span> entries. Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(m \times n\)</span> matrix:</p>
+<p><span class="math display">\[
+A = \begin{pmatrix}
+a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
+\end{pmatrix}
+\]</span></p>
+<p>Then, the product <span class="math inline">\(A \mathbb{x}\)</span> is the <span class="math inline">\(m\)</span>-tuple:</p>
+<p><span class="math display">\[
+A \mathbb{x} = \begin{pmatrix}
+a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n \\
+a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n \\
+\vdots \\
+a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n
+\end{pmatrix}
+\]</span></p>
+<p>For any two vectors <span class="math inline">\(\mathbb{x}\)</span> and <span class="math inline">\(\mathbb{y}\)</span> in <span class="math inline">\(\mathbb{R}^n\)</span> and any two scalars <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\mu\)</span>, the following property holds:</p>
+<p><span class="math display">\[
+A (\lambda \mathbb{x} + \mu \mathbb{y}) = \lambda A \mathbb{x}  + \mu A \mathbb{y}
+\]</span></p>
+<p>In the next section, we will use the linearity of matrix multiplication to motivate the definition of a linear transformation between vector spaces. Now, let’s relate all this to solving a system of linear equations. Suppose we are given numbers <span class="math inline">\(b_1, \ldots, b_m\)</span> and numbers <span class="math inline">\(a_{ij}, \ldots, a_{mn}\)</span>. Our goal is to find <span class="math inline">\(n\)</span> numbers <span class="math inline">\(x_1, \ldots, x_n\)</span> that solve the following system of linear equations:</p>
+<p><span class="math display">\[
+\begin{aligned}
+a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n &amp;= b_1 \\
+a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n &amp;= b_2 \\
+&amp;\vdots \\
+a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n &amp;= b_m
+\end{aligned}
+\]</span></p>
+<p>Calculations in linear algebra often reduce to solving a system of linear equations. When there are only a few equations, we can find the solutions manually, but as the number of equations increases, the calculations quickly become less about pleasant algebraic manipulations and more about keeping track of many small individual details. In other words, it is an organizational problem.</p>
+<p>We can write:</p>
+<p><span class="math display">\[
+\mathbb{b} = \begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_m \end{pmatrix}
+\]</span></p>
+<p>and our unknowns as:</p>
+<p><span class="math display">\[
+\mathbb{x} = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}
+\]</span></p>
+<p>Then, we can rewrite our system of linear equations in the more visually appealing form:</p>
+<p><span class="math display">\[
+A \mathbb{x} = \mathbb{b}
+\]</span></p>
+<p>When <span class="math inline">\(m &gt; n\)</span> (when there are more equations than unknowns), we generally do not expect solutions. For example, when <span class="math inline">\(m = 3\)</span> and <span class="math inline">\(n = 2\)</span>, this corresponds geometrically to the fact that three lines in a plane generally do not have a common intersection point. When <span class="math inline">\(m &lt; n\)</span> (when there are more unknowns than equations), we generally expect there to be many solutions. In the case where <span class="math inline">\(m = 2\)</span> and <span class="math inline">\(n = 3\)</span>, this corresponds geometrically to the fact that two planes in space generally intersect in an entire line. Much of the machinery of linear algebra deals with the remaining case when <span class="math inline">\(m = n\)</span>.</p>
+<p>Therefore, we want to find the <span class="math inline">\(n \times 1\)</span> column vector <span class="math inline">\(\mathbb{x}\)</span> that solves <span class="math inline">\(A \mathbb{x} = \mathbb{b}\)</span>, where <span class="math inline">\(A\)</span> is a given <span class="math inline">\(n \times n\)</span> matrix and <span class="math inline">\(\mathbb{b}\)</span> is a given <span class="math inline">\(n \times 1\)</span> column vector.</p>
+<p>Suppose the square matrix <span class="math inline">\(A\)</span> has an inverse matrix <span class="math inline">\(A^{-1}\)</span> (which means that <span class="math inline">\(A^{-1}\)</span> is also <span class="math inline">\(n \times n\)</span> and, more importantly, that <span class="math inline">\(A A^{-1} = I\)</span>, where <span class="math inline">\(I\)</span> is the identity matrix). Then our solution will be:</p>
+<p><span class="math display">\[
+\mathbb{x} = A^{-1} \mathbb{b}
+\]</span></p>
+<p>because:</p>
+<p><span class="math display">\[
+A \mathbb{x} = A (A^{-1} \mathbb{b}) = I \mathbb{b} = \mathbb{b}
+\]</span></p>
+<p>Thus, solving our system of linear equations reduces to understanding when the <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> has an inverse. (If an inverse matrix exists, then algorithms exist for its calculation). The key theorem of linear algebra, which is stated in section six, is essentially a list of many equivalencies for when an <span class="math inline">\(n \times n\)</span> matrix has an inverse, and it is therefore crucial to understanding when a system of linear equations can be solved.</p>
+</div>
+<div id="vector-spaces-and-linear-transformations" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Vector Spaces and Linear Transformations<a href="linear-algebra.html#vector-spaces-and-linear-transformations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The abstract approach to studying systems of linear equations begins with the notion of a vector space.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-1" class="definition"><strong>Definition 2.1  </strong></span>A set <span class="math inline">\(V\)</span> is a vector space over the real numbers <span class="math inline">\(\mathbb{R}\)</span> if there are two operations:</p>
+<ol style="list-style-type: decimal">
+<li><p>Scalar multiplication: For every <span class="math inline">\(a \in \mathbb{R}\)</span> and <span class="math inline">\(\mathbb{v} \in V\)</span>, there is an element <span class="math inline">\(a \cdot \mathbb{v} \in V\)</span>, denoted by <span class="math inline">\(a \mathbb{v}\)</span>, which satisfies the properties of scalar multiplication.</p></li>
+<li><p>Vector addition: For every <span class="math inline">\(\mathbb{v}, \mathbb{w} \in V\)</span>, there is an element <span class="math inline">\(\mathbb{v} + \mathbb{w} \in V\)</span>, denoted by <span class="math inline">\(\mathbb{v} + \mathbb{w}\)</span>, which satisfies the properties of vector addition.</p></li>
+</ol>
+<p>These operations must satisfy the following properties:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><strong>Additive identity</strong>: There exists an element <span class="math inline">\(\mathbb{0} \in V\)</span> (the zero vector) such that <span class="math inline">\(\mathbb{0} + \mathbb{v} = \mathbb{v}\)</span> for all <span class="math inline">\(\mathbb{v} \in V\)</span>.</p></li>
+<li><p><strong>Additive inverse</strong>: For each <span class="math inline">\(\mathbb{v} \in V\)</span>, there exists an element <span class="math inline">\(-\mathbb{v} \in V\)</span> such that <span class="math inline">\(\mathbb{v} + (-\mathbb{v}) = \mathbb{0}\)</span>.</p></li>
+<li><p><strong>Commutativity</strong>: For all <span class="math inline">\(\mathbb{v}, \mathbb{w} \in V\)</span>, it holds that <span class="math inline">\(\mathbb{v} + \mathbb{w} = \mathbb{w} + \mathbb{v}\)</span>.</p></li>
+<li><p><strong>Distributivity of scalar multiplication over vector addition</strong>: For all <span class="math inline">\(a \in \mathbb{R}\)</span> and for all <span class="math inline">\(\mathbb{v}, \mathbb{w} \in V\)</span>, we have <span class="math inline">\(a(\mathbb{v} + \mathbb{w}) = a\mathbb{v} + a\mathbb{w}\)</span>.</p></li>
+<li><p><strong>Distributivity of scalar multiplication over scalar addition</strong>: For all <span class="math inline">\(a, b \in \mathbb{R}\)</span> and for all <span class="math inline">\(\mathbb{v} \in V\)</span>, it holds that <span class="math inline">\((a + b)\mathbb{v} = a\mathbb{v} + b\mathbb{v}\)</span>.</p></li>
+<li><p><strong>Compatibility of scalar multiplication with field multiplication</strong>: For all <span class="math inline">\(a, b \in \mathbb{R}\)</span> and all <span class="math inline">\(\mathbb{v} \in V\)</span>, it holds that <span class="math inline">\(a(b\mathbb{v}) = (ab)\mathbb{v}\)</span>.</p></li>
+<li><p><strong>Multiplicative identity</strong>: For all <span class="math inline">\(\mathbb{v} \in V\)</span>, it holds that <span class="math inline">\(1 \cdot \mathbb{v} = \mathbb{v}\)</span>, where 1 is the multiplicative identity in <span class="math inline">\(\mathbb{R}\)</span>.</p></li>
+</ol>
+</div>
+<p>Real numbers can be replaced by complex numbers and, indeed, by any field.</p>
+<p>As a matter of notation, and to be consistent with common usage, the elements of a vector space are called vectors, and the elements of <span class="math inline">\(\mathbb{R}\)</span> (or any field being used) are called scalars. It is worth noting that the space <span class="math inline">\(\mathbb{R}^n\)</span> mentioned in the previous section satisfies these conditions.</p>
+<p>The natural map between vector spaces is that of a linear transformation.</p>
+<p>::: {.definition} A linear transformation <span class="math inline">\(T : V \to W\)</span> is a function from a vector space <span class="math inline">\(V\)</span> to a vector space <span class="math inline">\(W\)</span> such that for any real numbers <span class="math inline">\(a_1\)</span> and <span class="math inline">\(a_2\)</span>, and for any vectors <span class="math inline">\(v_1\)</span> and <span class="math inline">\(v_2\)</span> in <span class="math inline">\(V\)</span>, it holds that</p>
+<p><span class="math display">\[
+T(a_1 v_1 + a_2 v_2) = a_1 T(v_1) + a_2 T(v_2).
+\]</span></p>
+<p>Matrix multiplication from <span class="math inline">\(\mathbb{R}^n\)</span> to <span class="math inline">\(\mathbb{R}^m\)</span> provides an example of a linear transformation.
+:::</p>
+<p>::: {.definition} A subset <span class="math inline">\(U\)</span> of a vector space <span class="math inline">\(V\)</span> is a subspace of <span class="math inline">\(V\)</span> if <span class="math inline">\(U\)</span> itself is a vector space.</p>
+<p>In practice, it is usually easy to determine if a subset of a vector space is, in fact, a subspace, using the following proposition, whose proof is left to the reader.
+:::</p>
+<p>::: {.proposition} A subset <span class="math inline">\(U\)</span> of a vector space <span class="math inline">\(V\)</span> is a subspace of <span class="math inline">\(V\)</span> if <span class="math inline">\(U\)</span> is closed under addition and scalar multiplication.</p>
+<p>Given a linear transformation <span class="math inline">\(T : V \to W\)</span>, there are naturally occurring subspaces both in <span class="math inline">\(V\)</span> and <span class="math inline">\(W\)</span>.
+:::</p>
+<p>::: {.definition} If <span class="math inline">\(T : V \to W\)</span> is a linear transformation, then the kernel of <span class="math inline">\(T\)</span> is:</p>
+<p><span class="math display">\[
+\ker(T) = \{ v \in V : T(v) = 0 \}
+\]</span></p>
+<p>and the image of <span class="math inline">\(T\)</span> is</p>
+<p><span class="math display">\[
+\text{Im}(T) = \{ w \in W : \text{there exists } v \in V \text{ such that } T(v) = w \}.
+\]</span></p>
+<p>The kernel is a subspace of <span class="math inline">\(V\)</span>, since if <span class="math inline">\(v_1\)</span> and <span class="math inline">\(v_2\)</span> are two vectors in the kernel and <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are any two real numbers, then</p>
+<p><span class="math display">\[
+T(a v_1 + b v_2) = a T(v_1) + b T(v_2) = a \cdot 0 + b \cdot 0 = 0.
+\]</span>
+:::</p>
+<p>Similarly, we can prove that the image of <span class="math inline">\(T\)</span> is a subspace of <span class="math inline">\(W\)</span>.</p>
+<p>If the only vector spaces that existed were column vectors in <span class="math inline">\(\mathbb{R}\)</span>, then even this level of abstraction would be trivial. However, this is not the case.</p>
+<p>Here we consider just one example. Let <span class="math inline">\(C^*[0,1]\)</span> be the set of all real-valued functions with domain on the unit interval <span class="math inline">\([0,1]\)</span>:</p>
+<p><span class="math display">\[
+f : [0,1] \to \mathbb{R}
+\]</span></p>
+<p>such that the <span class="math inline">\(k\)</span>-th derivative of <span class="math inline">\(f\)</span> exists and is continuous. Since the sum of any two such functions and a multiple of any of these functions by a scalar will remain in <span class="math inline">\(C^*[0,1]\)</span>, we have a vector space. Although we will define the dimension officially in the next section, <span class="math inline">\(C^*[0,1]\)</span> will have infinite dimension (and thus will definitely not be some <span class="math inline">\(\mathbb{R}^n\)</span>). We can see the derivative as a linear transformation from <span class="math inline">\(C^*[0,1]\)</span> to those functions with one derivative less, <span class="math inline">\(C^{k-1}[0,1]\)</span>:</p>
+<p><span class="math display">\[
+\frac{d}{dx} : C^*[0,1] \to C^{k-1}[0,1].
+\]</span></p>
+<p>The kernel of this transformation consists of those functions whose <span class="math inline">\(k\)</span>-th derivative is zero, that is, constant functions.</p>
+<p>Now consider the differential equation</p>
+<p><span class="math display">\[
+f&#39;&#39; + 3f&#39; + 2f = 0.
+\]</span></p>
+<p>Let <span class="math inline">\(T\)</span> be the linear transformation:</p>
+<p><span class="math display">\[
+T : C^*[0,1] \to C^*[0,1]
+\]</span></p>
+<p>defined by</p>
+<p><span class="math display">\[
+T(f) = f&#39;&#39; + 3f&#39; + 2f.
+\]</span></p>
+<p>The problem of finding a solution <span class="math inline">\(f(x)\)</span> to the original differential equation can now be translated into finding an element in the kernel of <span class="math inline">\(T\)</span>. This suggests the possibility (which is indeed true) that the language of linear algebra can be used to understand solutions to (linear) differential equations.</p>
+</div>
+<div id="bases-dimension-and-linear-transformations-as-matrices" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Bases, Dimension, and Linear Transformations as Matrices<a href="linear-algebra.html#bases-dimension-and-linear-transformations-as-matrices" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Our next goal is to define the dimension of a vector space.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-2" class="definition"><strong>Definition 2.2  </strong></span>A set of vectors <span class="math inline">\((v_1, \dots, v_n)\)</span> forms a basis for the vector space <span class="math inline">\(V\)</span> if, for any vector <span class="math inline">\(v \in V\)</span>, there exist unique scalars <span class="math inline">\(a_1, \dots, a_n \in \mathbb{R}\)</span> such that</p>
+<p><span class="math display">\[
+v = a_1v_1 + \dots + a_nv_n.
+\]</span></p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-3" class="definition"><strong>Definition 2.3  </strong></span>The dimension of a vector space <span class="math inline">\(V\)</span>, denoted as <span class="math inline">\(\text{dim}(V)\)</span>, is the number of elements in a basis.</p>
+</div>
+<p>It is not obvious that the number of elements in a basis will always be the same, regardless of the chosen basis. To ensure that the definition of the dimension of a vector space is well-defined, we need the following theorem (which we will not prove):</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-4" class="definition"><strong>Definition 2.4  </strong></span>All bases of a vector space <span class="math inline">\(V\)</span> have the same number of elements.</p>
+</div>
+<p>For <span class="math inline">\(\mathbb{R}^n\)</span>, the usual basis is <span class="math inline">\(\{(1, 0, \dots, 0), (0, 1, 0, \dots, 0), \dots, (0, \dots, 0, 1)\}\)</span>. Therefore, <span class="math inline">\(\mathbb{R}^n\)</span> has dimension <span class="math inline">\(n\)</span>. If this were not the case, the previous definition of dimension would be incorrect and we would need another. This is an example of the principle mentioned in the introduction. We have an intuitive understanding of what the dimension should mean for specific examples: a line should be one-dimensional, a plane two-dimensional, and three-dimensional space. We then formulate a precise definition. If this definition gives the “correct answer” for our three already understood examples, we are somewhat confident that the definition has captured what dimension means in this case. We can then apply the definition to examples where our intuitions fail.</p>
+<p>Linked to the idea of a basis is:</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-5" class="definition"><strong>Definition 2.5  </strong></span>The vectors <span class="math inline">\((v_1, \dots, v_n)\)</span> in a vector space <span class="math inline">\(V\)</span> are linearly independent if, whenever <span class="math inline">\(a_1v_1 + \dots + a_nv_n = 0\)</span>, it must be the case that the scalars <span class="math inline">\(a_1, \dots, a_n\)</span> are all zero. Intuitively, a set of vectors is linearly independent if they all point in different directions. A basis, therefore, consists of a set of linearly independent vectors that span the vector space, where “span” means:</p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-6" class="definition"><strong>Definition 2.6  </strong></span>A set of vectors <span class="math inline">\((v_1, \dots, v_n)\)</span> spans the vector space <span class="math inline">\(V\)</span> if, for any vector <span class="math inline">\(v \in V\)</span>, there exist scalars <span class="math inline">\(a_1, \dots, a_n \in \mathbb{R}\)</span> such that</p>
+<p><span class="math display">\[
+v = a_1v_1 + \dots + a_nv_n.
+\]</span></p>
+</div>
+<p>Our next goal is to show how all linear transformations <span class="math inline">\(T: V \to W\)</span> between finite-dimensional spaces can be represented as matrix multiplication, provided that we fix bases for the vector spaces <span class="math inline">\(V\)</span> and <span class="math inline">\(W\)</span>.</p>
+<p>First, we fix a basis <span class="math inline">\(\{v_1, \dots, v_n\}\)</span> for <span class="math inline">\(V\)</span> and a basis <span class="math inline">\(\{w_1, \dots, w_m\}\)</span> for <span class="math inline">\(W\)</span>. Before examining the linear transformation <span class="math inline">\(T\)</span>, we need to show how each element of the <span class="math inline">\(n\)</span>-dimensional space <span class="math inline">\(V\)</span> can be represented as a column vector in <span class="math inline">\(\mathbb{R}^n\)</span> and how each element of the <span class="math inline">\(m\)</span>-dimensional space <span class="math inline">\(W\)</span> can be represented as a column vector in <span class="math inline">\(\mathbb{R}^m\)</span>. Given any vector <span class="math inline">\(v \in V\)</span>, by the definition of a basis, there exist unique real numbers <span class="math inline">\(a_1, \dots, a_n\)</span> such that:</p>
+<p><span class="math display">\[
+v = a_1v_1 + \dots + a_nv_n.
+\]</span></p>
+<p>Thus, we represent the vector <span class="math inline">\(v\)</span> with the column vector:</p>
+<p><span class="math display">\[
+\begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix}.
+\]</span></p>
+<p>Similarly, for any vector <span class="math inline">\(w \in W\)</span>, there exist unique real numbers <span class="math inline">\(b_1, \dots, b_m\)</span> such that:</p>
+<p><span class="math display">\[
+w = b_1w_1 + \dots + b_mw_m.
+\]</span></p>
+<p>Here, we represent <span class="math inline">\(w\)</span> as the column vector:</p>
+<p><span class="math display">\[
+\begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_m \end{pmatrix}.
+\]</span></p>
+<p>It is important to note that we have established a correspondence between the vectors in <span class="math inline">\(V\)</span> and <span class="math inline">\(W\)</span> and the column vectors in <span class="math inline">\(\mathbb{R}^n\)</span> and <span class="math inline">\(\mathbb{R}^m\)</span>, respectively. More technically, we can prove that <span class="math inline">\(V\)</span> is isomorphic to <span class="math inline">\(\mathbb{R}^n\)</span> (which means there is a one-to-one and onto linear transformation from <span class="math inline">\(V\)</span> to <span class="math inline">\(\mathbb{R}^n\)</span>) and that <span class="math inline">\(W\)</span> is isomorphic to <span class="math inline">\(\mathbb{R}^m\)</span>, although it must be emphasized that the real correspondence only exists after a basis has been chosen (which means that, while the isomorphism exists, it is not canonical; this is an important aspect because, in practice, we are often not provided with a basis).</p>
+<p>Now, we want to represent a linear transformation <span class="math inline">\(T: V \to W\)</span> as a matrix <span class="math inline">\(A\)</span> of size <span class="math inline">\(m \times n\)</span>. For each basis vector <span class="math inline">\(v_i\)</span> in the vector space <span class="math inline">\(V\)</span>, <span class="math inline">\(T(v_i)\)</span> will be a vector in <span class="math inline">\(W\)</span>. Therefore, there will be real numbers <span class="math inline">\(a_{ij}, \dots, a_{im}\)</span> such that:</p>
+<p><span class="math display">\[
+T(v_i) = a_{ij}w_1 + \dots + a_{im}w_m.
+\]</span></p>
+<p>We want to see that the linear transformation <span class="math inline">\(T\)</span> corresponds to the matrix <span class="math inline">\(A\)</span>:</p>
+<p><span class="math display">\[
+A = \begin{pmatrix} a_{11} &amp; a_{21} &amp; \dots &amp; a_{m1} \\ a_{12} &amp; a_{22} &amp; \dots &amp; a_{m2} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ a_{1n} &amp; a_{2n} &amp; \dots &amp; a_{mn} \end{pmatrix}.
+\]</span></p>
+<p>Given any vector <span class="math inline">\(v \in V\)</span>, with <span class="math inline">\(v = a_1v_1 + \dots + a_nv_n\)</span>, we have:</p>
+<p><span class="math display">\[
+T(v) = a_1T(v_1) + \dots + a_nT(v_n) = a_1(a_{11}w_1 + \dots + a_{1m}w_m) + \dots + a_n(a_{n1}w_1 + \dots + a_{nm}w_m).
+\]</span></p>
+<p>Under the correspondences of the vector spaces with the respective column spaces, this can be seen as the matrix multiplication of <span class="math inline">\(A\)</span> by the column vector corresponding to the vector <span class="math inline">\(v\)</span>:</p>
+<p><span class="math display">\[
+A \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix} = \begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_m \end{pmatrix}.
+\]</span></p>
+<p>It is important to note that if <span class="math inline">\(T: V \to V\)</span> is a linear transformation of a vector space onto itself, then the corresponding matrix will be <span class="math inline">\(n \times n\)</span>, i.e., a square matrix.</p>
+<p>Given different bases for the vector spaces <span class="math inline">\(V\)</span> and <span class="math inline">\(W\)</span>, the matrix associated with the linear transformation <span class="math inline">\(T\)</span> will change. A natural problem is to determine when two matrices actually represent the same linear transformation, but under different bases. This will be the subject of section seven.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/07-notes_econometrics.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["notes_on_maths_for_economists.pdf", "notes_on_maths_for_economists.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
