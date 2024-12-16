@@ -1,6 +1,6 @@
 --- 
 title: "Notes on maths for economists"
-author: "Juan Alvaro Díaz Raimond Kedilhac"
+# author: "Juan Alvaro Díaz Raimond Kedilhac"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
