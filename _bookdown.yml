@@ -1,4 +1,4 @@
-book_filename: "notes_on_maths_for_economists"
+book_filename: "notes-on-mathsforeconomists"
 new_session: true
 before_chapter_script: _common.R
 delete_merged_file: true

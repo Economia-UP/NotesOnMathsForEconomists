@@ -1,7 +1,7 @@
 --- 
 title: "Notes on maths for economists"
 author: "Juan Alvaro Díaz Raimond Kedilhac"
-date: "2024-12-09"
+date: "2024-12-15"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography:
